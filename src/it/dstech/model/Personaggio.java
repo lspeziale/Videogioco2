@@ -18,13 +18,12 @@ public abstract class Personaggio implements IPersonaggio {
 		do {
 			if ((getCombo() >= 4) && (a == true)) {
 				System.out.println("Hai a disposizione \n 1:pugno 2:Calcio 3:Mossa speciale");
-				
+
 			} else if ((getCombo() >= 2) && (a == true)) {
 				System.out.println("Hai a disposizione \n 1:pugno 2:Calcio ");
-				
+
 			} else if ((getCombo() < 2) && (a == true)) {
 				System.out.println("Hai a disposizione \n 1:Pugno ");
-				
 
 			}
 			if (a == false) {
@@ -61,7 +60,6 @@ public abstract class Personaggio implements IPersonaggio {
 		return danno;
 	}
 
-
 	public int random(int a, int b) {
 		Random rnd = new Random();
 		int aggiunta = rnd.nextInt(b - a) + a;
@@ -69,26 +67,41 @@ public abstract class Personaggio implements IPersonaggio {
 	}
 
 	public int pugno() {
-		int danno = getAttaccoPersonaggio() + random(1, 10);
-
-		System.out.println("-------------------------------");
-		System.out.print("Con il pugno ");
+		int danno = 0;
+		int random = (int) Math.random() * 100;
+		if (random >= 0 && random < 94) {
+			danno = getAttaccoPersonaggio() + random(1, 10);
+			System.out.println("-------------------------------");
+			System.out.print("Con il pugno ");
+		} else {
+			System.out.println("IL TUO ATTACCO E' FALLITO");
+		}
 		return danno;
 	}
 
 	public int calcio() {
-		int danno = getAttaccoPersonaggio() + random(10, 30);
-
+		int danno=0;
+		
+		int random = (int) Math.random() * 100;
+		if (random >= 0 && random < 89) {
+			danno = getAttaccoPersonaggio() + random(10, 30);
 		System.out.println("-------------------------------");
 		System.out.print("Con il calcio");
+		} else {
+			System.out.println("IL TUO ATTACCO E' FALLITO");}
 		return danno;
 	}
 
 	public int attaccoSpeciale() {
-		int danno = getAttaccoPersonaggio() + random(30, 60);
+		int danno=0;
+		int random = (int) Math.random() * 100;
+		if (random >= 0 && random < 79) {
+		danno = getAttaccoPersonaggio() + random(30, 60);
 
 		System.out.println("-------------------------------");
 		System.out.print("Con la mossa speciale");
+		} else {
+			System.out.println("IL TUO ATTACCO E' FALLITO");}
 		return danno;
 	}
 

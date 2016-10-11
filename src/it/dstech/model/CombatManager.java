@@ -3,7 +3,7 @@ package it.dstech.model;
 public class CombatManager {
 	int hpA;
 	int hpB;
-	public boolean UTENTE= true;
+	public boolean UTENTE = true;
 
 	public void combatti(IPersonaggio pg1, IPersonaggio pg2) {
 		int dannoA;
@@ -80,10 +80,12 @@ public class CombatManager {
 	public int calcolaDanno(IPersonaggio pg1, IPersonaggio pg2) {
 
 		int danno;
-		
+		if (pg1.mossaUtente(UTENTE) != 0) {
 			danno = pg1.mossaUtente(UTENTE) - pg2.getDifesaPersonaggio();
-		
-			
+		} else {
+			danno = 0;
+		}
+
 		return danno;
 
 	}
