@@ -7,4 +7,5 @@ public interface IPersonaggio {
 	public int getAttaccoPersonaggio();
 	public int getDifesaPersonaggio();
 	public void setHpPersonaggio(int a);
+	public void setNomePersonaggio(String a);
 }

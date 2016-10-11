@@ -3,7 +3,7 @@ package it.dstech.model;
 public class Vegeta extends Personaggio {
 
 	private final int HP = 700;
-	private final int ATTACCO = 60;
+	private final int ATTACCO = 50;
 	private final int DIFESA = 20;
 	private final String NOME = "Vegeta";
 	

@@ -11,7 +11,7 @@ public class CombatManager {
 		do {
 
 			if (pg1.getHpPersonaggio() <= 0) {
-				System.out.println("-------------------------------");
+				
 				System.out.println(pg2.getNomePersonaggio() + " HA VINTO.");
 			} else {
 
@@ -52,7 +52,7 @@ public class CombatManager {
 
 	public void stampaInfo(IPersonaggio pg1, IPersonaggio pg2) {
 
-		System.out.println("-------------------------------");
+		
 		System.out.println("ATTACCA " + pg1.getNomePersonaggio() + " - " + pg1.getHpPersonaggio() );
 		System.out.println("SUBISCE " + pg2.getNomePersonaggio() + " - " + pg2.getHpPersonaggio() );
 
@@ -75,9 +75,12 @@ public class CombatManager {
 	}
 
 	public int calcolaDanno(IPersonaggio pg1, IPersonaggio pg2) {
+		
 		int danno = pg1.mossa() - pg2.getDifesaPersonaggio();
 		return danno;
 
 	}
+	
+	
 
 }
