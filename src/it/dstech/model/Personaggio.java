@@ -3,6 +3,8 @@ package it.dstech.model;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.SingleSelectionModel;
+
 public abstract class Personaggio implements IPersonaggio {
 	protected int hpPersonaggio;
 	protected String nomePersonaggio;
@@ -26,11 +28,20 @@ public abstract class Personaggio implements IPersonaggio {
 				System.out.println("Hai a disposizione \n 1:Pugno ");
 
 			}
-			if (a == false) {
-				i = (int) Math.random() * 3 + 1;
-			} else {
-				i = sc.nextInt();
-			}
+
+			try{
+				if (a == false) {
+					i = (int) Math.random() * 3 + 1;
+				} else {
+					i = sc.nextInt();
+				}
+				}
+				catch(java.util.InputMismatchException errore){
+					System.out.println("digita un valore intero");
+					return mossaUtente(a);
+					
+				}
+
 			switch (i) {
 			case 1:
 				danno = pugno();
@@ -80,28 +91,30 @@ public abstract class Personaggio implements IPersonaggio {
 	}
 
 	public int calcio() {
-		int danno=0;
-		
+		int danno = 0;
+
 		int random = (int) Math.random() * 100;
 		if (random >= 0 && random < 89) {
 			danno = getAttaccoPersonaggio() + random(10, 30);
-		System.out.println("-------------------------------");
-		System.out.print("Con il calcio");
+			System.out.println("-------------------------------");
+			System.out.print("Con il calcio");
 		} else {
-			System.out.println("IL TUO ATTACCO E' FALLITO");}
+			System.out.println("IL TUO ATTACCO E' FALLITO");
+		}
 		return danno;
 	}
 
 	public int attaccoSpeciale() {
-		int danno=0;
+		int danno = 0;
 		int random = (int) Math.random() * 100;
 		if (random >= 0 && random < 79) {
-		danno = getAttaccoPersonaggio() + random(30, 60);
+			danno = getAttaccoPersonaggio() + random(30, 60);
 
-		System.out.println("-------------------------------");
-		System.out.print("Con la mossa speciale");
+			System.out.println("-------------------------------");
+			System.out.print("Con la mossa speciale");
 		} else {
-			System.out.println("IL TUO ATTACCO E' FALLITO");}
+			System.out.println("IL TUO ATTACCO E' FALLITO");
+		}
 		return danno;
 	}
 
