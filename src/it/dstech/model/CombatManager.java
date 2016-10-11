@@ -1,30 +1,32 @@
 package it.dstech.model;
 
 public class CombatManager {
-	public void combatti(IPersonaggio a, IPersonaggio b) {
-		int dannoA = a.mossa() - b.getDifesaPersonaggio();
-		int dannoB = b.mossa() - a.getDifesaPersonaggio();
-		int hpA = a.getHpPersonaggio();
-		int hpB = b.getHpPersonaggio();
+	int hpA;
+	int hpB; 
+	public void combatti(IPersonaggio pg1, IPersonaggio pg2) {
+		int dannoA = pg1.mossa() - pg2.getDifesaPersonaggio();
+		int dannoB = pg2.mossa() - pg1.getDifesaPersonaggio();
+		hpA = pg1.getHpPersonaggio();
+		hpB = pg2.getHpPersonaggio();
 		do {
 
 			if (hpA <= 0) {
-				System.out.println(a.getNomePersonaggio() + " è morto.");
+				System.out.println(pg1.getNomePersonaggio() + " è morto.");
 			} else {
 
 				hpB = hpB - dannoA;
 				System.out.println("-------------------------------");
-				System.out.println("ATTACCA " + a.getNomePersonaggio() + " - " + hpA);
-				System.out.println("SUBISCE " + b.getNomePersonaggio() + " - " + hpB);
+				System.out.println("ATTACCA " + pg1.getNomePersonaggio() + " - " + hpA);
+				System.out.println("SUBISCE " + pg2.getNomePersonaggio() + " - " + hpB);
 
 				if (hpB <= 0) {
-					System.out.println(b.getNomePersonaggio() + " è morto.");
+					System.out.println(pg2.getNomePersonaggio() + " è morto.");
 				} else {
 
 					hpA = (hpA - dannoB);
 					System.out.println("-------------------------------");
-					System.out.println("ATTACCA " + b.getNomePersonaggio() + " - " + hpB);
-					System.out.println("SUBISCE " + a.getNomePersonaggio() + " - " + hpA);
+					System.out.println("ATTACCA " + pg2.getNomePersonaggio() + " - " + hpB);
+					System.out.println("SUBISCE " + pg1.getNomePersonaggio() + " - " + hpA);
 
 				}
 			}
@@ -35,8 +37,8 @@ public class CombatManager {
 	public void stampaInfo(IPersonaggio a, IPersonaggio b) {
 		System.out.print("" + a.getNomePersonaggio() + " VS ");
 		System.out.println("" + b.getNomePersonaggio());
-		System.out.print("" + a.getHpPersonaggio() + "\t");
-		System.out.println("" + b.getHpPersonaggio());
+		System.out.print("" + hpA + "\t");
+		System.out.println("" + hpB);
 	}
 
 }
