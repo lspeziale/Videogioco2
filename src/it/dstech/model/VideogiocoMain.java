@@ -1,7 +1,7 @@
 package it.dstech.model;
 
 public class VideogiocoMain {
-	public static final boolean UTENTE= true;
+	public static final boolean UTENTE= true; //statico in quanto senno' non potremmo vederle nel main 
 	public static final boolean COMPUTER= false;
 	
 	public static void main(String args[])
@@ -10,8 +10,8 @@ public class VideogiocoMain {
 		IPersonaggio pg1 = scelta.scelta(UTENTE);
 		IPersonaggio pg2 = scelta.scelta(COMPUTER);
 		CombatManager comb = new CombatManager();
-		comb.stampaInfo(pg1, pg2);
+		comb.stampaInfoIniziale(pg1, pg2);
 		comb.combatti(pg1, pg2);
-		comb.stampaInfo(pg1, pg2);
+		comb.stampaInfoFinale(pg1, pg2);
 	}
 }

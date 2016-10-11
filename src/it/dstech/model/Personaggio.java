@@ -9,6 +9,7 @@ public abstract class Personaggio implements IPersonaggio {
 	public int mossa()
 	{
 		int aggiunta = (int)(Math.random()*20);
+		
 		int danno = attaccoPersonaggio + aggiunta;
 		return danno;
 	}
