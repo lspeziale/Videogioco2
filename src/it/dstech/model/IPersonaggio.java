@@ -8,4 +8,8 @@ public interface IPersonaggio {
 	public int getDifesaPersonaggio();
 	public void setHpPersonaggio(int a);
 	public void setNomePersonaggio(String a);
+	public int mossaUtente();
+	public int getCombo();
+
+	public void setCombo(int combo);
 }

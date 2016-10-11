@@ -1,12 +1,59 @@
 package it.dstech.model;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public abstract class Personaggio implements IPersonaggio {
 	protected int hpPersonaggio;
 	protected String nomePersonaggio;
 	protected int attaccoPersonaggio;
 	protected int difesaPersonaggio;
+	int combo = 0;
+
+	public int mossaUtente() {
+		int danno = 0;
+		boolean flag = false;
+		do {
+			if (getCombo() >= 4) {
+				System.out.println("Hai a disposizione \n 1:pugno 2:Calcio 3:Mossa speciale");
+			}
+			else if (getCombo() >= 2) {
+				System.out.println("Hai a disposizione \n 1:pugno 2:Calcio ");
+			}
+			else if(getCombo()<2){
+				System.out.println("Hai a disposizione \n 1:Pugno ");
+			}
+			Scanner sc = new Scanner(System.in);
+
+			int i = sc.nextInt();
+			switch (i) {
+			case 1:
+				danno = pugno();
+				setCombo(getCombo() + 1);
+				flag = true;
+				break;
+			case 2:
+				if (getCombo() >= 2) {
+					danno = calcio();
+					setCombo(getCombo() - 2);
+					flag = true;
+				}
+				break;
+			case 3:
+				if (getCombo() >= 4) {
+					danno = attaccoSpeciale();
+					setCombo(getCombo() - 4);
+					flag = true;
+				}
+
+				break;
+			default:
+				System.out.println("ERRORE");
+
+			}
+		} while (flag == false);
+		return danno;
+	}
 
 	public int mossa() {
 		int danno = 0;
@@ -21,7 +68,7 @@ public abstract class Personaggio implements IPersonaggio {
 			danno = attaccoSpeciale();
 
 		}
-		System.out.println(" che provoca un danno di: " + danno);
+
 		return danno;
 	}
 
@@ -35,7 +82,7 @@ public abstract class Personaggio implements IPersonaggio {
 		int danno = getAttaccoPersonaggio() + random(1, 10);
 
 		System.out.println("-------------------------------");
-		System.out.print("Con il pugno");
+		System.out.print("Con il pugno ");
 		return danno;
 	}
 
@@ -85,5 +132,13 @@ public abstract class Personaggio implements IPersonaggio {
 
 	public void setDifesaPersonaggio(int difesaPersonaggio) {
 		this.difesaPersonaggio = difesaPersonaggio;
+	}
+
+	public int getCombo() {
+		return combo;
+	}
+
+	public void setCombo(int combo) {
+		this.combo = combo;
 	}
 }
