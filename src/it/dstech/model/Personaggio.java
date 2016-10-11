@@ -10,22 +10,28 @@ public abstract class Personaggio implements IPersonaggio {
 	protected int difesaPersonaggio;
 	int combo = 0;
 
-	public int mossaUtente() {
+	public int mossaUtente(boolean a) {
 		int danno = 0;
 		boolean flag = false;
+		Scanner sc = new Scanner(System.in);
+		int i;
 		do {
-			if (getCombo() >= 4) {
+			if ((getCombo() >= 4) && (a == true)) {
 				System.out.println("Hai a disposizione \n 1:pugno 2:Calcio 3:Mossa speciale");
-			}
-			else if (getCombo() >= 2) {
+				
+			} else if ((getCombo() >= 2) && (a == true)) {
 				System.out.println("Hai a disposizione \n 1:pugno 2:Calcio ");
-			}
-			else if(getCombo()<2){
+				
+			} else if ((getCombo() < 2) && (a == true)) {
 				System.out.println("Hai a disposizione \n 1:Pugno ");
-			}
-			Scanner sc = new Scanner(System.in);
+				
 
-			int i = sc.nextInt();
+			}
+			if (a == false) {
+				i = (int) Math.random() * 3 + 1;
+			} else {
+				i = sc.nextInt();
+			}
 			switch (i) {
 			case 1:
 				danno = pugno();
@@ -55,22 +61,6 @@ public abstract class Personaggio implements IPersonaggio {
 		return danno;
 	}
 
-	public int mossa() {
-		int danno = 0;
-		int x = (int) (Math.random() * 100);
-		if (x < 80) {
-			danno = pugno();
-
-		} else if (x >= 80 && x < 95) {
-			danno = calcio();
-
-		} else if (x >= 95 && x <= 100) {
-			danno = attaccoSpeciale();
-
-		}
-
-		return danno;
-	}
 
 	public int random(int a, int b) {
 		Random rnd = new Random();

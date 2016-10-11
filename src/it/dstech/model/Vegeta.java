@@ -15,4 +15,6 @@ public class Vegeta extends Personaggio {
 		super.setHpPersonaggio(HP);
 	}
 
+	
+
 }

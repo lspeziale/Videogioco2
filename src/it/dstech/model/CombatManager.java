@@ -80,11 +80,10 @@ public class CombatManager {
 	public int calcolaDanno(IPersonaggio pg1, IPersonaggio pg2) {
 
 		int danno;
-		if (UTENTE == true) {
-			danno = pg1.mossaUtente() - pg2.getDifesaPersonaggio();
-		} else {
-			danno = pg1.mossa() - pg2.getDifesaPersonaggio();
-		}
+		
+			danno = pg1.mossaUtente(UTENTE) - pg2.getDifesaPersonaggio();
+		
+			
 		return danno;
 
 	}
